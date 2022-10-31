@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.2/p5.min.js"></script>
+    <style>
+      .text {
+        font-size: 40px;
+        font-weight: bold;
+        position: fixed;
+        top: 0;
+        color: #255359;
+      }
+    </style>
+  </head>
+  <marquee><img src="2.GIF" width="99.6" height="72.2" /></marquee>
+
+  <body style="background-color: #b4a582"></body>
+
+  <div class="text">Hi 大家好，歡迎來到我的網站！！！</div>
+  <script>
+    let img;
+    let box_size = (window.innerWidth * window.innerHeight) / 3000;
+
+    function setup() {
+      createCanvas(window.innerWidth, window.innerHeight, WEBGL);
+      img = createVideo("./1.mov");
+
+      img.hide();
+    }
+    function draw() {
+      background("#B17844");
+
+      push();
+      rotateZ(frameCount * 0.01);
+      rotateX(frameCount * 0.01);
+      rotateY(frameCount * 0.01);
+      texture(img);
+      box(box_size);
+      pop();
+    }
+    function mousePressed() {
+      img.loop();
+    }
+    window.onresize = function () {
+      resizeCanvas(window.innerWidth, window.innerHeight);
+    };
+  </script>
+</html>
